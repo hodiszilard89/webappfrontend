@@ -37,10 +37,10 @@ export function reducer(
 
   if (action.type === UPDATE_TODO) {
     // let id = Math.random();
-    console.log("updateltem a  " + action.id);
+    const item = fromJS(action.newTodo);
     return state.set(
-      "" + action.todo.get("id"),
-      action.todo
+      "" + action.newTodo.get("id"),
+      action.newTodo
       // fromJS({
       //   value: action.newTodo,
       //   id: action.id,

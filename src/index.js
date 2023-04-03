@@ -8,6 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 // import { composeWithDevTools } from "redux-devtools-extension";
 // import { fromJS } from "immutable";
 import { store } from "./reducers";
+import SingIn from "./components/SingIn";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TodoDetailContainer from "./containers/TodoDetailContainer";
@@ -88,7 +89,7 @@ root.render(
           <Route path="/" element={<AppContainer />} />
           <Route path="/newtodo" element={<NewTodoContainer />} />
           <Route path="/todo/:id" element={<TodoDetailContainer />} />
-          <Route path="/edittodo/:myParam" element={<EditTodoContainer />} />
+          <Route path="/edittodo/:id" element={<EditTodoContainer />} />
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -1,6 +1,9 @@
 import React from "react";
 import { Formik, Field, Form } from "formik";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateTodo } from "../actions/todos";
+import { fromJS } from "immutable";
 
 const initialValues = {
   firstName: "asdaasd",
@@ -8,9 +11,9 @@ const initialValues = {
   email: "asdasdas",
 };
 
-const onSubmit = (values, actions) => {
-  console.log(values);
-};
+// const onSubmit = (values, actions) => {
+//   console.log(values);
+// };
 
 const validate = (values) => {
   const errors = {};
@@ -28,24 +31,23 @@ const validate = (values) => {
   return errors;
 };
 
-const EditTodo2 = ({ item, updateTodo }) => {
-  //console.log(JSON.stringify(item));
-  //console.log(item.toJSON());
-  const item2 = item.toJSON();
-  console.log({
-    id: 1,
-    value: "Pista",
-    color: "blue",
-    done: false,
-    onDeleting: false,
-  });
+const EditTodo2 = ({ item, update }) => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = (event) => {
+    //event.preventDefault();
+    console.log(event.id);
+    dispatch(updateTodo(fromJS(event)));
+    // további adatkezelési logika...
+  };
+
   return (
     <div>
       <h1>Formik űrlap példa</h1>
       <Formik
         // initialValues={myData.toJS()}
-        initialValues={item.toJSON()}
-        onSubmit={updateTodo}
+        initialValues={item.toJS()}
+        onSubmit={handleSubmit}
         // validate={validate}
       >
         {({ errors, touched }) => (
